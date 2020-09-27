@@ -28,8 +28,8 @@ export class DiscordCoreModule implements NestModule {
 
     return {
       module: DiscordCoreModule,
-      providers: [paramsProvider],
-      exports: [],
+      providers: [paramsProvider, DiscordClient],
+      exports: [DiscordClient],
     };
   }
 

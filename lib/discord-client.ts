@@ -9,7 +9,7 @@ import { Params } from './params';
 
 @Injectable()
 export class DiscordClient {
-  private _client: Client;
+  private readonly _client: Client;
 
   constructor(
     @Inject(PROVIDER_PARAMS_TOKEN) private params: Params,
