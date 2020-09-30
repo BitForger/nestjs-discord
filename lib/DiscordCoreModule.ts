@@ -12,7 +12,7 @@ import {
 } from '@nestjs/common';
 import { Params } from './params';
 import { PROVIDER_PARAMS_TOKEN } from './constants';
-import { DiscordClient } from './discord-client';
+import { DiscordClient } from './discord.client';
 
 @Global()
 @Module({

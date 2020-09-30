@@ -1,0 +1,8 @@
+{
+  "directory": "./lib",
+  "delete": true,
+  "location": "branch",
+  "structure": "flat",
+  "include": [".ts$"],
+  "exclude": ["DiscordCoreModule.ts$", "dist$", "node_modules$"]
+}
