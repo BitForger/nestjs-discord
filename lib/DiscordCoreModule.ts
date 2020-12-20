@@ -13,6 +13,7 @@ import {
 import { Params } from './params';
 import { PROVIDER_PARAMS_TOKEN } from './constants';
 import { DiscordClient } from './discord.client';
+import { NestContainer } from '@nestjs/core';
 
 @Global()
 @Module({
@@ -33,9 +34,12 @@ export class DiscordCoreModule implements NestModule {
     };
   }
 
-  constructor(@Inject(PROVIDER_PARAMS_TOKEN) private readonly params: Params) {}
+  constructor(
+    @Inject(PROVIDER_PARAMS_TOKEN) private readonly params: Params,
+    private container: NestContainer,
+  ) {}
 
-  configure(consumer: MiddlewareConsumer): any {
-    const { token } = this.params;
-  }
+  configure(consumer: MiddlewareConsumer): any {}
+
+  private asyncCreateProviders() {}
 }
