@@ -6,15 +6,10 @@ export interface CommandOptions {
   command: string;
 }
 
-export const commands = new Map<
-  string,
-  Array<{ command: string; handler: Function }>
->();
-
 export function Command(options: CommandOptions): ClassDecorator {
+  // eslint-disable-next-line @typescript-eslint/ban-types
   return (constructor: Function) => {
-    constructor.prototype.commandName = options.command;
-    commands.set(options.command, []);
+    Reflect.defineMetadata('COMMAND', options.command, constructor)
     console.log(constructor.prototype);
   };
 }

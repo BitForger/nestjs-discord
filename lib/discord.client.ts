@@ -6,6 +6,7 @@ import { Inject, Injectable, Logger } from '@nestjs/common';
 import { Client } from 'discord.js';
 import { PROVIDER_PARAMS_TOKEN } from './constants';
 import { Params } from './params';
+import { NestContainer } from '@nestjs/core';
 
 @Injectable()
 export class DiscordClient {
@@ -14,6 +15,7 @@ export class DiscordClient {
   constructor(
     @Inject(PROVIDER_PARAMS_TOKEN) private params: Params,
     private logger: Logger,
+    private container: NestContainer,
   ) {
     this._client = new Client();
 
@@ -34,7 +36,7 @@ export class DiscordClient {
     this._client.login(params.token);
   }
 
-  get client() {
+  get client(): Client {
     return this._client;
   }
 }

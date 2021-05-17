@@ -5,7 +5,6 @@ import {
   DynamicModule,
   Global,
   Inject,
-  MiddlewareConsumer,
   Module,
   NestModule,
   Provider,
@@ -37,9 +36,12 @@ export class DiscordCoreModule implements NestModule {
   constructor(
     @Inject(PROVIDER_PARAMS_TOKEN) private readonly params: Params,
     private container: NestContainer,
-  ) {}
+  ) {
+    const modules = this.container.getModules();
+    // iterate over modules to get providers that are commands
+  }
 
-  configure(consumer: MiddlewareConsumer): any {}
+  configure(): any {}
 
   private asyncCreateProviders() {}
 }
