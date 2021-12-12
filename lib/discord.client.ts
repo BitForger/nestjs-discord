@@ -17,7 +17,9 @@ export class DiscordClient {
     private logger: Logger,
     private container: NestContainer,
   ) {
-    this._client = new Client();
+    this._client = new Client({
+      intents: ['GUILDS'],
+    });
 
     this._client.on('message', async (msg) => {
       const splitMessage = msg.content.split(' ');
